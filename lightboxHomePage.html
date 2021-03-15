@@ -1,0 +1,403 @@
+<head>
+<link rel="apple-touch-icon" sizes="180x180" href="../lightboxProj/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../lightboxProj/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../lightboxProj/favicon/favicon-16x16.png">
+<link rel="manifest" href="../lightboxProj/favicon/site.webmanifest">
+<link rel="mask-icon" href="../lightboxProj/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<meta charset="utf-8">
+<style>
+body { font-family:georgia; background-color: gray; }
+a { color:#999; text-decoration:none; }
+.openButton:hover { box-shadow: 0 1px 2px 0 rgba(255,255,255,0.24),0 10px 10px 0 rgba(255,255,255,0.19); }
+.openButton {
+    border:solid 1px #FFF;
+    box-shadow: 0px 0px 10px #CCC;
+    background:-moz-linear-gradient(top,#f4f4f4,#e8e8e8);
+    background:linear-gradient(top,#f4f4f4,#e8e8e8);
+    padding:8px;
+        color: #fff;
+        font-weight: bold;
+    background:#000000; /* Old browsers */
+    background:-moz-linear-gradient(top, #3F5D6E 0%, #000000 100%); /* FF3.6+ */
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#555), color-stop(100%,#000000)); /* Chrome,Safari4+ */
+    background:-webkit-linear-gradient(top, #3F5D6E 0%,#745858 100%); /* Chrome10+,Safari5.1+ */
+    background:-o-linear-gradient(top, #3F5D6E 0%,#000000 100%); /* Opera 11.10+ */
+    background:-ms-linear-gradient(top,#3F5D6E 0%,#000000 100%); /* IE10+ */
+    background:linear-gradient(to bottom, #3F5D6E 0%,#000000 100%); /* W3C */
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#555",endColorstr="#000000",GradientType=0); /* IE6-9 */
+    border: 1px #000 solid;
+    border-radius:.3em;
+        /* border-radius: .5em; */
+        /* padding: 5px; */
+    padding: 0;
+    height: 42px;
+        width: 250px;
+        margin: 16px 20px;
+}
+p span {
+text-align: center;
+display: block;
+font-size: 22px;
+}
+div.ext-icon, .pdf-icon {
+display: none;
+}
+.contextual-links-region {
+position: none;
+}
+.floatingDiv {
+width: auto;
+display: inline-block;
+overflow: auto;
+padding:5px;
+border-radius:4px;
+background-color:darkGray;
+/* <!-- margin-left: 75px; --> */
+}
+.floatingDiv_Inner {
+width: auto;
+display: inline-block;
+overflow: auto;
+padding:2px;
+border-radius:4px;
+background-color:darkGray;
+}
+#courseDescription {
+position: absolute;
+z-index: 2;
+display: none;
+backdrop-filter: #555;
+top: 30%;
+padding: 4px;
+max-width: auto;
+border-radius:4px;
+}
+#welcome {
+position: absolute;
+z-index: 2;
+display: none;
+backdrop-filter: #555;
+top: 24%;
+padding: 4px;
+max-width: auto;
+border-radius:4px;
+}
+#referencesDiv{
+position: absolute;
+z-index: 2;
+display: none;
+backdrop-filter: #555;
+top: 14%;
+left: 15%;
+padding: 4px;
+max-width: auto;
+border-radius:4px;
+background-color: darkGrey;
+}
+#contactInformation {
+position: absolute;
+z-index: 2;
+display: none;
+backdrop-filter: #555;
+top: 30%;
+padding: 4px;
+max-width: auto;
+border-radius:4px;
+}
+#discussionBoard {
+position: absolute;
+z-index: 2;
+display: none;
+backdrop-filter: #555;
+border-radius: 4px;
+padding: 10px;
+max-width: auto;
+background-color: darkGrey;
+}
+#toggle {
+position:relative;
+text-align:right;
+display:block;
+width: 250px;
+margin: 5px 0px 0px 5px;
+}
+#coursesData {
+position: absolute;
+z-index: 2;
+display: none;
+backdrop-filter: #555;
+border-radius: 4px;
+padding: 10px;
+max-width: auto;
+background-color: darkGrey;
+}
+#adminsInfo {
+position: absolute;
+z-index: 2;
+display: none;
+backdrop-filter: #555;
+border-radius: 4px;
+padding: 10px;
+max-width: auto;
+background-color: darkGrey;
+}
+#atrrsSchedules {
+position: absolute;
+z-index: 2;
+display: none;
+backdrop-filter: #555;
+border-radius: 4px;
+padding: 10px;
+max-width: auto;
+background-color: darkGrey;
+}
+#mcdmgTrainingSchedules {
+position: absolute;
+z-index: 2;
+display: none;
+backdrop-filter: #555;
+border-radius: 4px;
+padding: 10px;
+max-width: auto;
+background-color: darkGrey;
+}
+/*  Beginning Modal */
+/* Close Button */
+.popup-close {
+	width:30px;
+	height:30px;
+	padding-top:4px;
+	display:inline-block;
+	position:absolute;
+	top:0px;
+	right:0px;
+	transition:ease 0.25s all;
+	-webkit-transform:translate(50%, -50%);
+	transform:translate(50%, -50%);
+	border-radius:1000px;
+	background:rgba(0,0,0,0.8);
+	font-family:Arial, Sans-Serif;
+	font-size:20px;
+	text-align:center;
+	color:#fff;
+}
+.popup-close:hover {
+	-webkit-transform:translate(50%, -50%) rotate(180deg);
+	transform:translate(50%, -50%) rotate(180deg);
+	background:rgba(0,0,0,1);
+}
+.fit-picture {
+    width: 250px;
+}
+</style>
+<!--start LightBox image effects-->
+<link rel="stylesheet" type="text/css" href="../lightboxProj/css/lightbox.min.css" />
+<script src="../lightboxProj/js/jquery-3.3.1.min.js"></script>
+<script src="../lightboxProj/js/lightbox-plus-jquery.min.js"></script>
+<script src="../lightboxProj/js/jquery-ui.min.js"></script>
+</head>
+
+<body>
+<div style="margin:auto;padding:15px;position:absolute;">
+<div id="toggle" class="open" data-popup-open="popup-1">
+<button class="openButton" id="courses" data-href="courseDescription" title="Website Meta Descriptions">Website Meta Descriptions</button>
+<button class="openButton" id="welcomeLetter" data-href="welcome" title="LightBoxJS Magic">LightBoxJS Magic</button>
+<button class="openButton" id="references" data-href="referencesDiv" title="Technical Reference Guides">Technical Reference Guides</button>
+<button class="openButton" id="contactInfo" data-href="contactInformation" title="Contact Information">Contact Information</button>
+<button class="openButton" id="discussions" onclick="window.open('https:/www.coffeecup.com/forums/')" title="CoffeeCup Forums">CoffeeCup Forums</button>
+</div>
+<img src="../lightboxProj/photos/webDesign_finishedProduct.png" alt="webDesign_finishedProduct.png"  style="transform:translateY(-65%) translateX(37%);width:800px;" />
+</div>
+
+<section id="courseDescription" class="demo" data-popup="popup-1">
+<div class="floatingDiv">
+<h3 style="color: black;font:bold 1.5em Georgia;text-align:center;">Website Meta Description Best Practices</h3>
+    <img src="../lightboxProj/photos/descriptionMetaTag.png" style="border-radius:4px;" />
+	<br/>
+	<br/>
+	<address>Website Meta Best Practices: <a href="http://tools.seobook.com/meta-medic/">http://www.seobook.com</a></address>
+	<br/>
+	<address>How-To Guide to Writing Meta Descriptions: <a href="https://www.shopify.com/blog/how-to-write-meta-descriptions">https://www.how-to-write-meta-descriptions.com</a></address>
+	<br/>
+	<address>Customize Your Meta Tags: <a href="https://www.freemetataggenerator.com/">https://www.freemetataggenerator.com</a></address>
+	<br/>
+<a class="popup-close" data-popup-close="popup-1" style="text-decoration:none;">x</a>
+</div>
+</section>
+
+<section id="welcome" class="demo" data-popup="popup-1">
+<div class="floatingDiv">
+<img src="../lightboxProj/photos/famousLightbox.jpg" style="margin: 55px 10px 0px 0px; padding: 10px; height: 32em;border-radius:4px;" />
+<div style="float: right;">
+<h3 style="color: black;font:bold 1.5em Georgia;text-align:center;">LightBoxJS Magic</h3>
+  <a class="example-image-link" href="../lightboxProj/photos/lightBoxMobile.jpg" data-lightbox="stripMap" data-title="LightBoxJS Mobile" title="Mobile">
+  <button class="openButton">Mobile</button><br/>
+  </a>
+  <a href="../lightboxProj/photos/lightboxCrispImg.jpg" data-lightbox="KCIAirport" data-title="LightBoxJS Crisp Images" title="Crisp Images">
+  <button class="openButton">Crisp Images</button><br/>
+  </a>
+
+<!--   //BEGINNING of COURSE DATES Buttons && Administrative Info Buttons -->
+ <button class="openButton" id="courseData" data-href="coursesData" title="Embedded Modals">Embedded Modals</button><br/>
+ <button class="openButton" id="adminInfo" data-href="adminsInfo" title="...More Embedded Modals">...More Embedded Modals</button><br/>
+<a class="popup-close" data-popup-close="popup-1" style="text-decoration:none;">x</a>
+<!--   //ENDING of COURSE DATES Buttons && Administrative Info Buttons -->
+</div>
+</section>
+
+<!-- /* BEGINNING -- Body section for 'courseData_slideImg' */ -->
+<section id="coursesData" class="demo" data-popup="popup-1">
+<div class="floatingDiv">
+    <img src="../lightboxProj/photos/Calendar-Recovered.png" style="padding:10px 10px;" />
+</div>
+<div style="float: right;">
+<h3 style="color: black;font:bold 1.5em Georgia;text-align:center;" title="Embedded Modal Examples">Embedded Modal Examples</h3>
+<!--   //BEGINNING of ATRRS FY18/FY19/FY20 Course Dates Buttons -->
+  <button class="openButton" id="atrrsSchedule" data-href="atrrsSchedules" title="3-Button Modal">3-Button Modal</button><br/>
+  <button class="openButton" id="mcdmgTrainingSchedule" data-href="mcdmgTrainingSchedules" title="2-Button Modal">2-Button Modal</button><br/>
+<a class="popup-close" data-popup-close="popup-1" style="text-decoration:none;">x</a>
+</div>
+</section>  
+<!--   //ENDING of ATRRS FY18/FY19/FY20 Course Dates Buttons -->
+  
+  <!-- /* BEGINNING -- Body section for 'atrrsSchedule_slideImg' */ -->
+<section id="atrrsSchedules" class="demo" data-popup="popup-1">
+<div class="floatingDiv">
+    <img src="../lightboxProj/photos/lightboxBeforeAfter.jpg" style="padding:10px 10px;" />
+</div>
+<div style="float: right;">
+<h3 style="color: black;font:bold 1.5em Georgia;text-align:center;" data-title="3-Button Embedded">3-Button Embedded</h3>
+<!-- //ATRRS Schedule (3 Slides) --> 
+  <a href="../lightboxProj/photos/lightboxLeaves.png" data-lightbox="courseDatesFY18" title="Leaves">
+  <button class="openButton">Leaves</button><br/></a>
+  <a href="../lightboxProj/photos/northShores.jpg" data-lightbox="courseDatesFY19" title="North Shores">
+  <button class="openButton">North Shores</button><br/></a>
+  <a href="../lightboxProj/photos/rollingClouds.jpg" data-lightbox="courseDatesFY20" title="Rolling Clouds">
+  <button class="openButton">Rolling Clouds</button><br/></a>
+<a class="popup-close" data-popup-close="popup-1" style="text-decoration:none;">x</a>
+</div>
+</section>
+<!-- /* ENDING -- Body section for 'atrrsSchedule_slideImg'  */ -->
+  
+  <!-- /* BEGINNING -- Body section for 'mcdmgTrainingSchedule_slideImg' */ -->
+<section id="mcdmgTrainingSchedules" class="demo" data-popup="popup-1">
+<div class="floatingDiv">
+    <img src="../lightboxProj/photos/css3LightboxCodeWorks.jpg" style="padding:10px 10px;" />
+</div>
+<div style="float: right;">
+<h3 style="color: black;font:bold 1.5em Georgia;text-align:center;">2-Button Embedded</h3>
+<!-- //Training Schedule -->
+  <a href="../lightboxProj/photos/lightGallery.png" data-lightbox="trainingSchedule_2Wk" title="LightBoxJS Gallery">
+  <button class="openButton">LightBoxJS Gallery</button><br/></a>
+  <a href="../lightboxProj/photos/lightboxCodeWorks.jpg" data-lightbox="trainingSchedule_3Wk" title="LightBoxJS Code Works">
+  <button class="openButton">LightBoxJS Code Works</button><br/></a>
+<a class="popup-close" data-popup-close="popup-1" style="text-decoration:none;">x</a>
+</div>
+</section>
+<!-- /* ENDING -- Body section for 'mcdmgTrainingSchedule_slideImg'  */ -->
+
+<!-- /* BEGINNING -- Body section for 'adminInfo_slideImg' */ -->
+<section id="adminsInfo" class="demo" data-popup="popup-1">
+<div class="floatingDiv_Inner">
+    <img src="../lightboxProj/photos/lightboxPlugIns_small.jpg" style="padding:10px 10px;" />
+</div>
+<div style="float: right;">
+<h3 style="color: black;font:bold 1.5em Georgia;text-align:center;">Various LightBoxJS Options</h3>
+<!-- //Adobe PDF Document -->  
+  <a class="wplightbox" data-width=1200 data-height=1200 href="https://www.wonderplugin.com/wp-content/uploads/2017/02/how-to-create-a-wordpress-post-carousel.pdf" target="_blank" title="Adobe PDF Document">
+  <button class="openButton">Adobe PDF Document</button><br/></a>
+<!-- //Pending Image -->
+  <a href="../lightboxProj/PendingImg.bmp" data-lightbox="productExamples" data-title="Pending Image Placeholder" title="Pending Image Placeholder">
+	<button class="openButton">Pending Image Placeholder</button><br/></a>
+<a class="popup-close" data-popup-close="popup-1" style="text-decoration:none;">x</a>
+
+<h3 style="color: black;font:bold 1.5em Georgia;text-align:center;">Grouped LightBoxJS Images</h3>
+  <a href="../lightboxProj/photos/lightboxImg1of3.jpg" data-lightbox="TravelInfo-1" data-title="Click the right half of the image to move forward." title="3-Images Button">
+  <button class="openButton" id="fn">3-Images Button</button><br/>
+  </a>
+  <a href="../lightboxProj/photos/lightGallery.png" data-lightbox="TravelInfo-1" data-title="Click the right half of the image to move forward.">
+<!--   <button class="openButton" id="fn">3-Images Button</button><br/>
+ -->  </a>
+  <a href="../lightboxProj/photos/lightboxImg3of3.png" data-lightbox="TravelInfo-1" data-title="Click the right half of the image to move forward.">
+<!--   <button class="openButton" id="fn">3-Images Button</button><br/>
+ -->  </a>
+</section>
+<!-- /* ENDING -- Body section for 'adminInfo_slideImg'  */ -->
+
+<section id="referencesDiv" class="demo" data-popup="popup-1">
+<div class="floatingDiv">
+<img src="../lightboxProj/photos/webDesign.png" style="padding:10px 10px;border-radius:4px;" />
+<p><span>***(These Guides Assist With Much Of Your Daily Development Needs)***<span></span>Note-(Links Open In New Page Tabs)</span></p>
+</div>
+<div style="float: right;">
+<h3 style="color: black;font:bold 1.5em Georgia;text-align:center;">Technical Reference Guides</h3>
+	<a href="http://www.csszengarden.com/" target="_blank">
+  <button class="openButton">CSS Zen Garden</button><br/>
+  </a>
+    <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5" target="_blank">
+  <button class="openButton">HTML5 For Developers</button><br/>
+  </a>
+      <a href="https://helpx.adobe.com/photos/tutorials.html" target="_blank">
+  <button class="openButton">Learn To Photoshop</button><br/>
+  </a>
+    <a href="https://docs.microsoft.com/en-us/dotnet/csharp/" target="_blank">
+  <button class="openButton">C# - A Microsoft Guide Of How-To's</button><br/>
+  </a>
+    <a href="http://theinspirationgrid.com/category/design/" target="_blank">
+  <button class="openButton">Graphic Design Inspiration Guide</button><br/>
+  </a>
+    <a href="https://webdesignledger.com/29-online-style-guides/#15732afeeb" target="_blank">
+  <button class="openButton">Web Design Style Guide</button><br/>
+  </a>
+    <a href="https://www.w3schools.com/js/" target="_blank">
+  <button class="openButton">JavaScript Reference Guide</button><br/>
+  </a>
+    <a href="https://www.w3schools.com/cssref/" target="_blank">
+  <button class="openButton">CSS Quick Reference Guide</button><br/>
+  </a>
+<a class="popup-close" data-popup-close="popup-1" style="text-decoration:none;">x</a>
+</section>
+
+<section id="contactInformation" class="demo" data-popup="popup-1">
+<div class="floatingDiv">
+<h3 style="color: black;font:bold 1.5em Georgia;text-align:center;">Contact Information</h3>
+        <img src="../lightboxProj/photos/geekchiqSpace_codeExamples_small.png" style="border-radius:4px;" />
+		<br/>
+		<br/>
+        <address>For more information, email: <a href="mailto:kelly.daake@gmail.com">The Web Master Professional Expert</a></address>
+		<br/>
+<a class="popup-close" data-popup-close="popup-1" style="text-decoration:none;">x</a>
+</div>
+</section>
+
+<section id="discussionBoard" class="demo" data-popup="popup-1">
+<div class="floatingDiv">
+<h3 style="color: black;font:bold 1.5em Georgia;text-align:center;">Discussion Board</h3>
+	<address><a href="">Email Link</a></address>
+<a class="popup-close" data-popup-close="popup-1" style="text-decoration:none;">x</a>
+</div>
+</section>
+
+<script>
+(function($) {
+$(document).ready(function() {
+$('#welcomeLetter, #references, #courses, #contactInfo, #courseData, #adminInfo, #atrrsSchedule, #mcdmgTrainingSchedule').click(function(){
+var $div = $('#' + $(this).data('href'));
+$('.demo').not($div).hide();
+$div.slideToggle();
+});
+
+
+$('[data-popup-close]').on('click', function(e)  {
+var targeted_popup_class = jQuery(this).attr('data-popup-close');
+$('[data-popup="' + targeted_popup_class + '"]').fadeOut(350);
+e.preventDefault();
+});
+});
+})($);
+</script>
+
+</body>
+</html> 
